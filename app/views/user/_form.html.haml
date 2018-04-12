@@ -1,0 +1,17 @@
+= form_for @user do |f|
+  = errors_for @user, false
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :phone_number
+    = f.text_field :phone_number
+  .field
+    = f.label :email
+    = f.text_field :email
+  .actions
+= f.submit 'Save'
