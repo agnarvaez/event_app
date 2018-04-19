@@ -3,7 +3,14 @@
     .navbar-header
       %a.navbar-brand= link_to 'Hours Logger', root_path, class: 'white'
     %ul.nav.navbar-nav
-      %li= link_to 'Home', root_path
-      %li= link_to 'Log In', user_session_path
-      %li= link_to 'Sign Up', new_user_registration_path
-      %li= link_to 'Logout', destroy_user_session_path, method: :Delete
+      - if current_user
+        %li= link_to 'Home', root_path
+        %li= link_to 'Profile', user_path(current_user)
+        %li= link_to 'Logout', destroy_user_session_path, method: :delete
+      - else
+        %li= link_to 'Sign in', user_session_path
+        %li= link_to 'Sign Up', new_user_registration_path
+
+      -# - if current_user.has_role?( :admin )
+      -#   %li= link_to 'Users', users_path
+      -#   %li= link_to 'Roles', roles_path

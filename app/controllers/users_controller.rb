@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_users, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -14,6 +14,18 @@ class UsersController < ApplicationController
       respond_with @user, location: -> { user_path(@user) }, notice: "User was updated successfully"
     else
       render "show"
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+    f    ormat.html { render :edit }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
