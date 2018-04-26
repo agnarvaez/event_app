@@ -1,2 +1,30 @@
-%h1 Events#index
-%p Find me in app/views/events/index.html.haml
+%h1 Events
+
+%table.table.table.hover
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Date
+      %th Duration
+      %th Location
+      %th
+      %th
+      %th
+
+
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.name
+        %td= event.description
+        %td= event.date
+        %td= event.duration
+        %td= event.location
+        %td= link_to 'More Details', event, class: 'btn btn-warning btn-lg'
+        %td= link_to 'Edit', edit_event_path(event), class: 'btn btn-warning btn-lg'
+        %td= link_to 'Destroy', event, class: 'btn btn-warning btn-lg', method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Event', new_event_path, class: 'btn btn-warning btn-lg'

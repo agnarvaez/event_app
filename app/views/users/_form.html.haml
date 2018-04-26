@@ -13,5 +13,10 @@
   .field
     = f.label :email
     = f.text_field :email
+  - if current_user.has_role?(:admin)
+    .field
+      = f.label :roles
+      = f.collection_select :role_ids, Role.all, :id, :name, {}, {multiple: true}
+
   .actions
-= f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-warning btn-lg'

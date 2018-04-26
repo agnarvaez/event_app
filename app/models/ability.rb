@@ -5,7 +5,6 @@ class Ability
     user ||= User.new
     if user.has_role? :admin
       can :manage, :all
-      cannot :destroy, [Role, User, Event, Order, Product, OrderProduct]
     else
       can :read, :all
     end

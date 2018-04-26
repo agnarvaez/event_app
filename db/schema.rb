@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419175715) do
+ActiveRecord::Schema.define(version: 20180426192048) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.datetime "date"
+    t.integer "duration"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "location"
+    t.index ["deleted_at"], name: "index_events_on_deleted_at"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -21,13 +35,22 @@ ActiveRecord::Schema.define(version: 20180419175715) do
     t.index ["deleted_at"], name: "index_roles_on_deleted_at"
   end
 
-  create_table "user_roles", force: :cascade do |t|
+  create_table "user_events", force: :cascade do |t|
     t.integer "use_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["use_id"], name: "index_user_events_on_use_id"
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_user_roles_on_role_id"
-    t.index ["use_id"], name: "index_user_roles_on_use_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

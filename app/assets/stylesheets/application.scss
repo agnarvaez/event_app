@@ -21,17 +21,16 @@
 body{
   margin-top: 60px;
   font-family: "Avenir Next" !important;
-  background-image: url("clock.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 5% 20%;
+  // background-image: url("clock.png");
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-position: 5% 20%;
   background-color: lightgray;
 }
+
 .container {
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 img{
   height: 100px;
