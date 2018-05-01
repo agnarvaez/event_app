@@ -1,1 +1,17 @@
-= link_to 'View Events', events_path, class: 'btn btn-warning btn-lg'
+#events
+  .container-events
+    %h3.text-center Upcoming Events
+    .row.text-center
+      - @events.each do |event|
+        .col-sm-4
+        .thumbnail
+          %p= image_tag "mountain.jpg"
+          %p= event.name
+          %p= event.description
+          %p= event.date
+          %p= event.duration
+          %p= event.location
+          = link_to 'Attending', events_path, class: 'btn btn-success btn-sm'
+          = link_to 'Maybe', events_path, class: 'btn btn-warning btn-sm'
+          = link_to 'Not Attending', events_path, class: 'btn btn-danger btn-sm'
+%p
