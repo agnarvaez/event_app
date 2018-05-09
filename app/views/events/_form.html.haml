@@ -24,5 +24,8 @@
   .field
     = f.label :location
     = f.text_field :location
+  .field
+    = f.label "Is event available"
+    = f.check_box :available
   .actions
     = f.submit 'Save', class: 'btn btn-warning btn-lg'

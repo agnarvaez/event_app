@@ -1,11 +1,16 @@
 %nav.navbar.navbar-inverse.navbar-fixed-top
   .container-fluid
-    .navbar-header
-      %a.navbar-brand= link_to 'Hours Logger', root_path, class: 'white'
     %ul.nav.navbar-nav
+      %li= link_to 'Hours Logger', root_path
+
       - if current_user
         %li= link_to 'Home', root_path
         %li= link_to 'Profile', user_path(current_user)
+        %li= link_to 'Events', events_path
+        .search-container
+          %input{:name => "search", :placeholder => "Search Events", :type => "text"}
+            %button{:type => "submit"}
+              %i.fa.fa-search
         %li= link_to 'Logout', destroy_user_session_path, method: :delete
         - if current_user.has_role?(:admin)
           %li= link_to 'Users', users_path
@@ -13,3 +18,15 @@
       - else
         %li= link_to 'Sign in', user_session_path
         %li= link_to 'Sign Up', new_user_registration_path
+        %li= link_to 'SIGN UP', data: {toggle: "modal", target: "#myModal"}
+        .container
+          #myModal.modal.fade{:role => "dialog"}
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  %button.close{"data-dismiss" => "modal", :type => "button"}
+                  %h4.modal-title Modal Header
+                .modal-body
+                  %p Some text in the modal.
+                .modal-footer
+                  %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

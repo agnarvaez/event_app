@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426192048) do
+ActiveRecord::Schema.define(version: 20180509171348) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180426192048) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "location"
+    t.boolean "available", default: false
     t.index ["deleted_at"], name: "index_events_on_deleted_at"
   end
 

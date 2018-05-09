@@ -1,17 +1,35 @@
 #events
-  .container-events
-    %h3.text-center Upcoming Events
+  .container
+    %h3.text-center
     .row.text-center
-      - @events.each do |event|
-        .col-sm-4
-        .thumbnail
-          %p= image_tag "mountain.jpg"
-          %p= event.name
-          %p= event.description
-          %p= event.date
-          %p= event.duration
-          %p= event.location
-          = link_to 'Attending', events_path, class: 'btn btn-success btn-sm'
-          = link_to 'Maybe', events_path, class: 'btn btn-warning btn-sm'
-          = link_to 'Not Attending', events_path, class: 'btn btn-danger btn-sm'
+
 %p
+
+.container
+  %section#team.pb-5
+    %h5.section-title.h1 Upcoming Events
+    .row
+      - @events.each do |event|
+        - if event.available
+          .col-xs-12.col-sm-6.col-md-4
+            .image-flip{:ontouchstart => "this.classList.toggle('hover');"}
+              .mainflip
+                .frontside
+                  .card
+                    .card-body.text-center
+                      %p= image_tag "mountain.jpg"
+                      %h4.card-title= event.name
+                .backside
+                  .card
+                    .card-body.text-center.mt-4
+                      %h4.card-title= event.name
+                      %p= event.description
+                      %h5.card-title Date
+                      %p= event.date
+                      %h5.card-title Duration
+                      %p= event.duration
+                      %h5.card-title Location
+                      %p= event.location
+                      = link_to 'Attending', events_path, class: 'btn btn-outline-success btn-xs'
+                      = link_to 'Maybe', events_path, class: 'btn btn-outline-success btn-xs'
+                      = link_to 'Not Attending', events_path, class: 'btn btn-outline-danger btn-xs'

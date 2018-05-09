@@ -12,7 +12,9 @@
     - @users.each do |user|
       %tr
         %td= user.first_name
-        %td= user.role_ids
+        %td
+          - user.roles.each do |role|
+            = role.name
         %td= link_to 'Show', user, class: 'btn btn-warning btn-lg'
         %td= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning btn-lg'
         %td= link_to 'Destroy', user, class: 'btn btn-warning btn-lg', method: :delete, data: { confirm: 'Are you sure?' }
