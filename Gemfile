@@ -17,6 +17,7 @@ gem 'bootstrap-sass'
 
 gem 'responders'
 
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 gem 'paranoia', '~> 2.2'

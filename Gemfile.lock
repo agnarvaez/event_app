@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 21aa9d792876921265d14a9016cc003d3b698f75
+  specs:
+    ransack (1.8.8)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,6 +139,8 @@ GEM
     orm_adapter (0.5.0)
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
+    polyamorous (1.3.3)
+      activerecord (>= 3.0)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.4)
@@ -239,6 +252,7 @@ DEPENDENCIES
   paranoia (~> 2.2)
   puma (~> 3.7)
   rails (~> 5.1.5)
+  ransack!
   recaptcha
   responders
   sass-rails (~> 5.0)

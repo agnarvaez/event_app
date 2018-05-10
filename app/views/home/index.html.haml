@@ -9,6 +9,9 @@
   %section#team.pb-5
     %h5.section-title.h1 Upcoming Events
     .row
+      = search_form_for @q do |event|
+        = event.search_field :name
+        = event.submit
       - @events.each do |event|
         - if event.available
           .col-xs-12.col-sm-6.col-md-4
